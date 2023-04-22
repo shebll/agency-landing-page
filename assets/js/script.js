@@ -24,7 +24,27 @@ let toggle = function () {
   document.body.classList.toggle("nav-active");
 };
 addEventOnElement([toggleBtn, overlay], "click", toggle);
-console.log(navbar);
-console.log(toggleBtn);
-console.log(overlay);
+// console.log(navbar);
+// console.log(toggleBtn);
+// console.log(overlay);
 ///////////navbar toggle for mobile////////////
+
+////////////////Start parallax effect//////////////
+const parallaxElements = document.querySelectorAll(".hero-banner img");
+console.log(parallaxElements);
+
+window.addEventListener("mousemove", (event) => {
+  parallaxElements.forEach((element) => {
+    const movementX =
+      (event.clientX / window.innerWidth) * Number(element.dataset.speed);
+    const movementY =
+      (event.clientY / window.innerHeight) * Number(element.dataset.speed);
+    element.animate(
+      {
+        transform: `translate(${movementX}px,${movementY}px)`,
+      },
+      { duration: 500, fill: "forwards" }
+    );
+  });
+});
+////////////////End parallax effect//////////////
